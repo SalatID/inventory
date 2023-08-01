@@ -4,7 +4,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-primary">Tambah Kategori</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahKategoriModal">Tambah
+                    Kategori</button>
             </div>
         </div>
         <div class="row">
@@ -36,6 +37,39 @@
                     </table>
 
                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="tambahKategoriModal" tabindex="-1" role="dialog"
+        aria-labelledby="tambahKategoriModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tambahKategoriModalLabel">Tambah Kategori</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <label for="">Nama</label>
+                                <input type="text" name="nama" class="form-control" required>
+                                @if ($errors->has('nama'))
+                                    <span class="text-danger">{{ $errors->first('nama') }}</span>
+                                @endif
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                </form>
+
             </div>
         </div>
     </div>
