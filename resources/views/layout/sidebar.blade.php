@@ -33,7 +33,7 @@
             <span>Manajemen Gudang</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{route('kategori.list')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Manajemen Kategori</span></a>
     </li>
