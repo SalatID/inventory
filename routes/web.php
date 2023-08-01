@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GudangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +29,4 @@ Route::get('/login',[LoginController::class,'login'])->name('login');
 Route::get('/pengguna',[PenggunaController::class,'list'])->name('pengguna.list');
 Route::get('/barang',[BarangController::class,'list'])->name('barang.list');
 Route::get('/kategori',[CategoryController::class,'list'])->name('kategori.list');
+Route::get('/gudang',[GudangController::class,'list'])->name('gudang.list');

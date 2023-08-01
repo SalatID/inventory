@@ -28,7 +28,7 @@
             <span>Manajemen Barang</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{route('gudang.list')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Manajemen Gudang</span></a>
     </li>
