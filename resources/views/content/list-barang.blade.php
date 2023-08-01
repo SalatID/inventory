@@ -69,11 +69,11 @@
                             </div>
                             <div class="row">
                                 <label for="">Kategori</label>
-                                <select name="kategori" class="form-control" required>
+                                <select name="kategori_id" class="form-control" required>
                                     <option value="">Pilih Kategori</option>
                                 </select>
-                                @if ($errors->has('kategori'))
-                                    <span class="text-danger">{{ $errors->first('kategori') }}</span>
+                                @if ($errors->has('kategori_id'))
+                                    <span class="text-danger">{{ $errors->first('kategori_id') }}</span>
                                 @endif
                             </div>
                             <div class="row">
