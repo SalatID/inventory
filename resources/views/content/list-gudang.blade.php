@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <button type="button" class="btn btn-primary">Tambah Gudang</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahGudangModal">Tambah Gudang</button>
         </div>
     </div>
     <div class="row">
@@ -40,5 +40,51 @@
             </div>
         </div>
     </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="tambahGudangModal" tabindex="-1" role="dialog"
+aria-labelledby="tambahGudangModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="tambahGudangModalLabel">Tambah Gudang</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form action="">
+            @csrf
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <label for="">Nama</label>
+                        <input type="text" name="nama" class="form-control" required>
+                        @if ($errors->has('nama'))
+                            <span class="text-danger">{{ $errors->first('nama') }}</span>
+                        @endif
+                    </div>
+                    <div class="row">
+                        <label for="">Alamat</label>
+                        <textarea name="alamat" class="form-control" required></textarea>
+                        @if ($errors->has('alamat'))
+                            <span class="text-danger">{{ $errors->first('alamat') }}</span>
+                        @endif
+                    </div>
+                    <div class="row">
+                        <label for="">Kapasitas</label>
+                        <input type="number" name="kapasitas" class="form-control" required>
+                        @if ($errors->has('kapasitas'))
+                            <span class="text-danger">{{ $errors->first('kapasitas') }}</span>
+                        @endif
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+        </form>
+
+    </div>
+</div>
 </div>
 @endsection
