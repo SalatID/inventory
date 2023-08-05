@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string("nama");
             $table->timestamps();
-            $table->string('created_user');
-            $table->string('updated_user');
+            $table->string('created_user')->nullable();
+            $table->string('updated_user')->nullable();
         });
     }
 

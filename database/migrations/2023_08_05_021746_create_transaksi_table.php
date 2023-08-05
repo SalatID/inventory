@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string("status");
             $table->integer("kuantiti");
             $table->timestamps();
-            $table->string('created_user');
-            $table->string('updated_user');
+            $table->string('created_user')->nullable();
+            $table->string('updated_user')->nullable();
         });
     }
 

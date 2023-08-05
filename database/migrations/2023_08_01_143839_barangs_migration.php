@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('foto')->nullable();
             $table->timestamps();
             $table->string('created_user');
-            $table->string('updated_user');
+            $table->string('updated_user')->nullable();
         });
     }
 

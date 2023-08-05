@@ -23,20 +23,23 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php($i=1)
+                            @foreach($data as $val)
                             <tr>
-                                <td>1</td>
-                                <td>Mursalat</td>
-                                <td>1234</td>
-                                <td>mursalat@gmail.com</td>
-                                <td>Admin</td>
-                                <td>01 Jan 2023, 13:00:00</td>
-                                <td>01 Jan 2023, 13:00:00</td>
+                                <td>{{$i++}}</td>
+                                <td>{{$val->nama}}</td>
+                                <td>{{$val->nip}}</td>
+                                <td>{{$val->email}}</td>
+                                <td>{{$val->role}}</td>
+                                <td>{{$val->created_at}}</td>
+                                <td>{{$val->updated_at}}</td>
                                 <th>
                                     <a href="#" class="btn btn-success">Detail</a>
                                     <a href="#" class="btn btn-secondary">Edit</a>
                                     <a href="#" class="btn btn-danger">Hapus</a>
                                 </th>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -54,27 +57,27 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="">
+                <form action="{{route('pengguna.tambah')}}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="container">
                             <div class="row">
                                 <label for="">Nama</label>
-                                <input type="text" name="nama" class="form-control" required>
+                                <input type="text" name="nama" class="form-control" required value="{{old('nama')}}">
                                 @if($errors->has("nama"))
                                 <span class="text-danger">{{$errors->first("nama")}}</span>
                                 @endif
                             </div>
                             <div class="row">
                                 <label for="">NIP</label>
-                                <input type="text" name="nip" class="form-control" required>
+                                <input type="number" name="nip" class="form-control" required value="{{old('nip')}}">
                                 @if($errors->has("nip"))
                                 <span class="text-danger">{{$errors->first("nip")}}</span>
                                 @endif
                             </div>
                             <div class="row">
                                 <label for="">Email</label>
-                                <input type="email" name="email" class="form-control" required>
+                                <input type="email" name="email" class="form-control" required value="{{old('email')}}">
                                 @if($errors->has("email"))
                                 <span class="text-danger">{{$errors->first("email")}}</span>
                                 @endif
@@ -83,8 +86,8 @@
                                 <label for="">Role</label>
                                 <select name="role" class="form-control" required>
                                     <option value="">Pilih Role</option>
-                                    <option value="Admin">Admin</option>
-                                    <option value="Staf">Staf</option>
+                                    <option value="Admin" {{old('role')=='Admin'?'selected':''}}>Admin</option>
+                                    <option value="Staf" {{old('role')=='Staf'?'selected':''}}>Staf</option>
                                 </select>
                                 @if($errors->has("role"))
                                 <span class="text-danger">{{$errors->first("role")}}</span>
@@ -92,14 +95,14 @@
                             </div>
                             <div class="row">
                                 <label for="">Password</label>
-                                <input type="password" name="password" class="form-control" required>
+                                <input type="password" name="password" class="form-control" required value="{{old('password')}}">
                                 @if($errors->has("password"))
                                 <span class="text-danger">{{$errors->first("password")}}</span>
                                 @endif
                             </div>
                             <div class="row">
                                 <label for="">Retype Password</label>
-                                <input type="password" name="retype_password" class="form-control" required>
+                                <input type="password" name="retype_password" class="form-control" required value="{{old('retype_password')}}">
                                 @if($errors->has("retype_password"))
                                 <span class="text-danger">{{$errors->first("retype_password")}}</span>
                                 @endif

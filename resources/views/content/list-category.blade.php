@@ -51,7 +51,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="">
+                <form action="{{route('kategori.tambah')}}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="container">
