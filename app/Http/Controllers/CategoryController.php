@@ -39,4 +39,15 @@ class CategoryController extends Controller
             'message'=>'Tambah Kategori Gagal'
         ]);
     }
+    public function detailKategori($id)
+    {
+        $data = Kategori::find($id);
+        if($data==null){
+            return redirect()->route('kategori.index')->with([
+                'error'=>true,
+                'message'=>'Data Tidak Ditemukan'
+            ]);
+        }
+        return view('content.detail-kategori',compact('data'));
+    }
 }

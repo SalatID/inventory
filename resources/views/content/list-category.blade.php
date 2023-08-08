@@ -32,7 +32,7 @@
                                 <td>{{$val->created_at}}</td>
                                 <td>{{$val->updated_at}}</td>
                                 <th>
-                                    <a href="#" class="btn btn-sm btn-success">Detail</a>
+                                    <a href="{{route('kategori.detail',[$val->id])}}" class="btn btn-sm btn-success">Detail</a>
                                     <a href="#" class="btn btn-sm btn-secondary">Edit</a>
                                     <a href="#" class="btn btn-sm btn-danger">Hapus</a>
                                 </th>
