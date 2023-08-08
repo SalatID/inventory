@@ -32,3 +32,4 @@ Route::get('/barang',[BarangController::class,'list'])->name('barang.list');
 Route::get('/kategori',[CategoryController::class,'list'])->name('kategori.list');
 Route::post('/kategori/tambah',[CategoryController::class,'tambahKategori'])->name('kategori.tambah');
 Route::get('/gudang',[GudangController::class,'list'])->name('gudang.list');
+Route::post('/gudang/tambah',[GudangController::class,'tambahGudang'])->name('gudang.tambah');

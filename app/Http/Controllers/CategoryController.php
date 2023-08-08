@@ -30,12 +30,12 @@ class CategoryController extends Controller
         if($ins){
             return redirect()->back()->with([
                 'error'=>false,
-                'message'=>'Tambah Pengguna Berhasil'
+                'message'=>'Tambah Kategori Berhasil'
             ]);
         }
         return redirect()->back()->with([
             'error'=>true,
-            'message'=>'Tambah Pengguna Gagal'
+            'message'=>'Tambah Kategori Gagal'
         ]);
     }
 }

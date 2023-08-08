@@ -22,17 +22,20 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php($i=1)
+                            @foreach ($data as $val)
                             <tr>
-                                <td>1</td>
-                                <td>Komputer & Aksesoris</td>
-                                <td>01 Jan 2023, 13:00:00</td>
-                                <td>01 Jan 2023, 13:00:00</td>
+                                <td>{{$i++}}</td>
+                                <td>{{$val->nama}}</td>
+                                <td>{{$val->created_at}}</td>
+                                <td>{{$val->updated_at}}</td>
                                 <th>
                                     <a href="#" class="btn btn-sm btn-success">Detail</a>
                                     <a href="#" class="btn btn-sm btn-secondary">Edit</a>
                                     <a href="#" class="btn btn-sm btn-danger">Hapus</a>
                                 </th>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
 
