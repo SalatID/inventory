@@ -36,4 +36,15 @@ class GudangController extends Controller
             'message'=>'Tambah Kategori Gagal'
         ]);
     }
+    public function detailGudang($id)
+    {
+        $data = Gudang::find($id);
+        if($data==null){
+            return redirect()->route('gudang.list')->with([
+                'error'=>true,
+                'message'=>'Data Tidak Ditemukan'
+            ]);
+        }
+        return view('content.detail-gudang',compact('data'));
+    }
 }

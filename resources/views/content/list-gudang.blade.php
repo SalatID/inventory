@@ -35,7 +35,7 @@
                                     <td>{{$item->created_at}}</td>
                                     <td>{{$item->updated_at}}</td>
                                     <th>
-                                        <a href="#" class="btn btn-success">Detail</a>
+                                        <a href="{{route('gudang.detail',[$item->id])}}" class="btn btn-success">Detail</a>
                                         <a href="#" class="btn btn-secondary">Edit</a>
                                         <a href="#" class="btn btn-danger">Hapus</a>
                                     </th>
