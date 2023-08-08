@@ -31,6 +31,8 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/kategori',[CategoryController::class,'list'])->name('kategori.list');
     Route::post('/kategori/tambah',[CategoryController::class,'tambahKategori'])->name('kategori.tambah');
     Route::get('/kategori/detail/{id}',[CategoryController::class,'detailKategori'])->name('kategori.detail');
+    Route::put('/kategori/update/{id}',[CategoryController::class,'updateKategori'])->name('kategori.update');
+    Route::get('/kategori/edit/{id}',[CategoryController::class,'editKategori'])->name('kategori.edit');
     Route::get('/gudang',[GudangController::class,'list'])->name('gudang.list');
     Route::post('/gudang/tambah',[GudangController::class,'tambahGudang'])->name('gudang.tambah');
     Route::get('/gudang/detail/{id}',[GudangController::class,'detailGudang'])->name('gudang.detail');

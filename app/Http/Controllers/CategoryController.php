@@ -50,4 +50,49 @@ class CategoryController extends Controller
         }
         return view('content.detail-kategori',compact('data'));
     }
+    public function updateKategori($id)
+    {
+        $validate = request()->validate([
+            'nama'=>['required']
+        ]);
+        $nama = Kategori::where('nama',request('nama'))->exists();
+        if($nama){
+            return redirect()->back()->with([
+                'error'=>true,
+                'message'=>'Nama kategori '.request('nama').' sudah terdaftar'
+            ]);
+        }
+        $data = Kategori::find($id);
+        if($data==null){
+            return redirect()->route('kategori.index')->with([
+                'error'=>true,
+                'message'=>'Data Tidak Ditemukan'
+            ]);
+        }
+        $upd = $data->update([
+            'nama'=>request('nama'),
+            'updated_user'=>auth()->user()->nama
+        ]);
+        if($upd){
+            return redirect()->route('kategori.list')->with([
+                'error'=>false,
+                'message'=>'Ubah Kategori Berhasil'
+            ]);
+        }
+        return redirect()->back()->with([
+            'error'=>true,
+            'message'=>'Ubah Kategori Gagal'
+        ]);
+    }
+    public function editKategori($id)
+    {
+        $data = Kategori::find($id);
+        if($data==null){
+            return redirect()->route('kategori.index')->with([
+                'error'=>true,
+                'message'=>'Data Tidak Ditemukan'
+            ]);
+        }
+        return view('content.edit-kategori',compact('data'));
+    }
 }
