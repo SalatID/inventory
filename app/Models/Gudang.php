@@ -11,6 +11,7 @@ class Gudang extends Model
     protected $fillable = [
         'nama',
         'alamat',
-        'kapasitas'
+        'kapasitas',
+        'created_user'
     ];
 }

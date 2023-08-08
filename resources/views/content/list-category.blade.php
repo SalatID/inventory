@@ -16,6 +16,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
+                                <th>Dibuat Oleh</th>
                                 <th>Tanggal Dibuat</th>
                                 <th>Tanggal Diedit</th>
                                 <th>Action</th>
@@ -27,6 +28,7 @@
                             <tr>
                                 <td>{{$i++}}</td>
                                 <td>{{$val->nama}}</td>
+                                <td>{{$val->created_user}}</td>
                                 <td>{{$val->created_at}}</td>
                                 <td>{{$val->updated_at}}</td>
                                 <th>

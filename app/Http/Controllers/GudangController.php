@@ -23,6 +23,7 @@ class GudangController extends Controller
             'nama'=>request('nama'),
             'alamat'=>request('alamat'),
             'kapasitas'=>request('kapasitas'),
+            'created_user'=>auth()->user()->nama
         ]);
         if($ins){
             return redirect()->back()->with([

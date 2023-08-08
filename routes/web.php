@@ -23,13 +23,20 @@ use App\Http\Controllers\GudangController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['middleware'=>['auth']],function(){
+    Route::get('/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+    Route::get('/pengguna',[PenggunaController::class,'list'])->name('pengguna.list');
+    Route::post('/pengguna/tambah',[PenggunaController::class,'tambahPengguna'])->name('pengguna.tambah');
+    Route::get('/barang',[BarangController::class,'list'])->name('barang.list');
+    Route::get('/kategori',[CategoryController::class,'list'])->name('kategori.list');
+    Route::post('/kategori/tambah',[CategoryController::class,'tambahKategori'])->name('kategori.tambah');
+    Route::get('/gudang',[GudangController::class,'list'])->name('gudang.list');
+    Route::post('/gudang/tambah',[GudangController::class,'tambahGudang'])->name('gudang.tambah');
+    Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+});
 Route::get('/halo',[GreetingController::class,'halloUser']);
-Route::get('/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+
 Route::get('/login',[LoginController::class,'login'])->name('login');
-Route::get('/pengguna',[PenggunaController::class,'list'])->name('pengguna.list');
-Route::post('/pengguna/tambah',[PenggunaController::class,'tambahPengguna'])->name('pengguna.tambah');
-Route::get('/barang',[BarangController::class,'list'])->name('barang.list');
-Route::get('/kategori',[CategoryController::class,'list'])->name('kategori.list');
-Route::post('/kategori/tambah',[CategoryController::class,'tambahKategori'])->name('kategori.tambah');
-Route::get('/gudang',[GudangController::class,'list'])->name('gudang.list');
-Route::post('/gudang/tambah',[GudangController::class,'tambahGudang'])->name('gudang.tambah');
+Route::post('/login',[LoginController::class,'procLogin'])->name('proc.login');
+
+

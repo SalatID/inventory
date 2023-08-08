@@ -17,6 +17,7 @@
                                 <th>Nama</th>
                                 <th>Alamat</th>
                                 <th>Kapasitas</th>
+                                <th>Dibuat Oleh</th>
                                 <th>Tanggal Dibuat</th>
                                 <th>Tanggal Diedit</th>
                                 <th>Action</th>
@@ -30,6 +31,7 @@
                                     <td>{{$item->nama}}</td>
                                     <td>{{$item->alamat}}</td>
                                     <td>{{$item->kapasitas}}</td>
+                                    <td>{{$item->created_user}}</td>
                                     <td>{{$item->created_at}}</td>
                                     <td>{{$item->updated_at}}</td>
                                     <th>

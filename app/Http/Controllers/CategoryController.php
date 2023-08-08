@@ -26,6 +26,7 @@ class CategoryController extends Controller
         }
         $ins = Kategori::create([
             'nama'=>request('nama'),
+            'created_user'=>auth()->user()->nama
         ]);
         if($ins){
             return redirect()->back()->with([
