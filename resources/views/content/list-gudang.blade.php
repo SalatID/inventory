@@ -18,6 +18,7 @@
                                 <th>Alamat</th>
                                 <th>Kapasitas</th>
                                 <th>Dibuat Oleh</th>
+                                <th>Diedit Oleh</th>
                                 <th>Tanggal Dibuat</th>
                                 <th>Tanggal Diedit</th>
                                 <th>Action</th>
@@ -32,11 +33,12 @@
                                     <td>{{$item->alamat}}</td>
                                     <td>{{$item->kapasitas}}</td>
                                     <td>{{$item->created_user}}</td>
+                                    <td>{{$item->updated_user}}</td>
                                     <td>{{$item->created_at}}</td>
                                     <td>{{$item->updated_at}}</td>
                                     <th>
                                         <a href="{{route('gudang.detail',[$item->id])}}" class="btn btn-success">Detail</a>
-                                        <a href="#" class="btn btn-secondary">Edit</a>
+                                        <a href="{{route('gudang.edit',[$item->id])}}" class="btn btn-secondary">Edit</a>
                                         <a href="#" class="btn btn-danger">Hapus</a>
                                     </th>
                                 </tr>

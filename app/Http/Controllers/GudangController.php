@@ -47,4 +47,46 @@ class GudangController extends Controller
         }
         return view('content.detail-gudang',compact('data'));
     }
+    public function updateGudang($id)
+    {
+        $validate = request()->validate([
+            'nama'=>['required','string'],
+            'alamat'=>['required','string'],
+            'kapasitas'=>['required','numeric'],
+        ]);
+        $data = Gudang::find($id);
+        if($data==null){
+            return redirect()->route('gudang.list')->with([
+                'error'=>true,
+                'message'=>'Data Tidak Ditemukan'
+            ]);
+        }
+        $upd = $data->update([
+            'nama'=>request('nama'),
+            'alamat'=>request('alamat'),
+            'kapasitas'=>request('kapasitas'),
+            'updated_user'=>auth()->user()->nama
+        ]);
+        if($upd){
+            return redirect()->route('gudang.list')->with([
+                'error'=>false,
+                'message'=>'Ubah Gudang Berhasil'
+            ]);
+        }
+        return redirect()->back()->with([
+            'error'=>true,
+            'message'=>'Ubah Gudang Gagal'
+        ]);
+    }
+    public function editGudang($id)
+    {
+        $data = Gudang::find($id);
+        if($data==null){
+            return redirect()->route('gudang.list')->with([
+                'error'=>true,
+                'message'=>'Data Tidak Ditemukan'
+            ]);
+        }
+        return view('content.edit-gudang',compact('data'));
+    }
 }

@@ -12,6 +12,7 @@ class Gudang extends Model
         'nama',
         'alamat',
         'kapasitas',
-        'created_user'
+        'created_user',
+        'updated_user'
     ];
 }

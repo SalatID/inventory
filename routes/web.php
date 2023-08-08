@@ -36,6 +36,8 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/gudang',[GudangController::class,'list'])->name('gudang.list');
     Route::post('/gudang/tambah',[GudangController::class,'tambahGudang'])->name('gudang.tambah');
     Route::get('/gudang/detail/{id}',[GudangController::class,'detailGudang'])->name('gudang.detail');
+    Route::put('/gudang/update/{id}',[GudangController::class,'updateGudang'])->name('gudang.update');
+    Route::get('/gudang/edit/{id}',[GudangController::class,'editGudang'])->name('gudang.edit');
     Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 });
 Route::get('/halo',[GreetingController::class,'halloUser']);
