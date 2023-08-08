@@ -88,11 +88,32 @@ class CategoryController extends Controller
     {
         $data = Kategori::find($id);
         if($data==null){
-            return redirect()->route('kategori.index')->with([
+            return redirect()->route('kategori.list')->with([
                 'error'=>true,
                 'message'=>'Data Tidak Ditemukan'
             ]);
         }
         return view('content.edit-kategori',compact('data'));
+    }
+    public function hapusKategori($id)
+    {
+        $data = Kategori::find($id);
+        if($data==null){
+            return redirect()->route('kategori.list')->with([
+                'error'=>true,
+                'message'=>'Data Tidak Ditemukan'
+            ]);
+        }
+        $del = $data->delete();
+        if($del){
+            return redirect()->route('kategori.list')->with([
+                'error'=>false,
+                'message'=>'Hapus Kategori Berhasil'
+            ]);
+        }
+        return redirect()->route('kategori.list')->with([
+            'error'=>true,
+            'message'=>'Hapus Kategori Gagal'
+        ]);
     }
 }

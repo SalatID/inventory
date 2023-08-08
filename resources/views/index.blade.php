@@ -108,7 +108,14 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('assets') }}/js/demo/chart-area-demo.js"></script>
     <script src="{{ asset('assets') }}/js/demo/chart-pie-demo.js"></script>
-
+    <script>
+        function deleteData(t){
+            src = $(t).data('src')
+            if(confirm("Anda yakin ingin menghapus data ini?")){
+                window.location.href = src
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -36,7 +36,7 @@
                                 <th>
                                     <a href="{{route('kategori.detail',[$val->id])}}" class="btn btn-sm btn-success">Detail</a>
                                     <a href="{{route('kategori.edit',[$val->id])}}" class="btn btn-sm btn-secondary">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                                    <a href="#" onclick="deleteData(this)" data-src="{{route('kategori.hapus',[$val->id])}}" class="btn btn-sm btn-danger">Hapus</a>
                                 </th>
                             </tr>
                             @endforeach
