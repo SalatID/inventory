@@ -39,7 +39,7 @@
                                     <th>
                                         <a href="{{route('gudang.detail',[$item->id])}}" class="btn btn-success">Detail</a>
                                         <a href="{{route('gudang.edit',[$item->id])}}" class="btn btn-secondary">Edit</a>
-                                        <a href="#" class="btn btn-danger">Hapus</a>
+                                        <a onclick="deleteData(this)" data-src="{{route('gudang.hapus',[$item->id])}}" href="#" class="btn btn-danger">Hapus</a>
                                     </th>
                                 </tr>
                             @endforeach

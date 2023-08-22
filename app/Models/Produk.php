@@ -22,8 +22,4 @@ class Produk extends Model
     {
         return $this->hasOne(Kategori::class,'id','kategori_id');
     }
-    public function data_pembuat()
-    {
-        return $this->hasOne(User::class,'id','created_user');
-    }
 }
