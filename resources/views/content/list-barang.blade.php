@@ -29,7 +29,7 @@
                             @php($i=1)
                             @foreach($data as $val)
                             <tr>
-                                <td>{{$i}}</td>
+                                <td>{{$i++}}</td>
                                 <td>{{$val->nama}}</td>
                                 <td>{{$val->data_kategori->nama}}</td>
                                 <td>Rp {{number_format($val->harga)}}</td>
@@ -40,7 +40,7 @@
                                 <td>{{$val->updated_user}}</td>
                                 <td>{{$val->updated_at}}</td>
                                 <th>
-                                    <a href="#" class="btn btn-sm btn-success">Detail</a>
+                                    <a href="{{route('barang.detail',[$val->id])}}" class="btn btn-sm btn-success">Detail</a>
                                     <a href="#" class="btn btn-sm btn-secondary">Edit</a>
                                     <a href="#" class="btn btn-sm btn-danger">Hapus</a>
                                 </th>

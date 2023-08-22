@@ -32,6 +32,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/pengguna/hapus/{id}',[PenggunaController::class,'hapusUser'])->name('pengguna.hapus');
     Route::post('/pengguna/tambah',[PenggunaController::class,'tambahPengguna'])->name('pengguna.tambah');
     Route::get('/barang',[BarangController::class,'list'])->name('barang.list');
+    Route::get('/barang/detail/{id}',[BarangController::class,'detailBarang'])->name('barang.detail');
     Route::post('/barang',[BarangController::class,'tambahBarang'])->name('barang.tambah');
     Route::get('/kategori',[CategoryController::class,'list'])->name('kategori.list');
     Route::post('/kategori/tambah',[CategoryController::class,'tambahKategori'])->name('kategori.tambah');
