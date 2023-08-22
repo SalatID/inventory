@@ -34,7 +34,7 @@ class BarangController extends Controller
             "expired_at"=>request("expired_at"),
             "deskripsi"=>request("deskripsi"),
             "foto"=>$filename,
-            "created_user"=>auth()->user()->id
+            "created_user"=>auth()->user()->nama
         ]);
         if($ins){
             return redirect()->back()->with([

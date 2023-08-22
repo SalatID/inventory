@@ -26,6 +26,10 @@ Route::get('/', function () {
 Route::group(['middleware'=>['auth']],function(){
     Route::get('/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
     Route::get('/pengguna',[PenggunaController::class,'list'])->name('pengguna.list');
+    Route::get('/pengguna/detail/{id}',[PenggunaController::class,'detailUser'])->name('pengguna.detail');
+    Route::get('/pengguna/edit/{id}',[PenggunaController::class,'editUser'])->name('pengguna.edit');
+    Route::put('/pengguna/update/{id}',[PenggunaController::class,'updateUser'])->name('pengguna.update');
+    Route::get('/pengguna/hapus/{id}',[PenggunaController::class,'hapusUser'])->name('pengguna.hapus');
     Route::post('/pengguna/tambah',[PenggunaController::class,'tambahPengguna'])->name('pengguna.tambah');
     Route::get('/barang',[BarangController::class,'list'])->name('barang.list');
     Route::post('/barang',[BarangController::class,'tambahBarang'])->name('barang.tambah');

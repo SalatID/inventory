@@ -58,12 +58,12 @@ class PenggunaController extends Controller
     {
         $data = User::find($id);
         if($data==null){
-            return redirect()->route('user.list')->with([
+            return redirect()->route('pengguna.list')->with([
                 'error'=>true,
                 'message'=>'Data Tidak Ditemukan'
             ]);
         }
-        return view('content.detail-user',compact('data'));
+        return view('content.detail-pengguna',compact('data'));
     }
     public function updateUser($id)
     {
@@ -72,19 +72,22 @@ class PenggunaController extends Controller
             'nip'=>['required','numeric'],
             'email'=>['required','email'],
             'role'=>['required'],
-            // 'password'=>['required'],
-            // 'retype_password'=>['required','same:password']
+            'password'=>['nullable'],
+            'retype_password'=>['nullable','same:password']
         ]);
-        $email = User::where('email',request('email'))->exists();
-        if($email){
-            return redirect()->back()->with([
-                'error'=>true,
-                'message'=>'email '.request('email').' sudah terdaftar'
-            ]);
+        $pengguna = User::where('email',request('email'));
+        $oldEmail = $pengguna->first()->email;
+        if($oldEmail != request("email")){
+            if($pengguna->exist()){
+                return redirect()->back()->with([
+                    'error'=>true,
+                    'message'=>'email '.request('email').' sudah terdaftar'
+                ]);
+            }
         }
         $data = User::find($id);
         if($data==null){
-            return redirect()->route('user.list')->with([
+            return redirect()->route('pengguna.list')->with([
                 'error'=>true,
                 'message'=>'Data Tidak Ditemukan'
             ]);
@@ -101,7 +104,7 @@ class PenggunaController extends Controller
         }
         $upd = $data->update($updateData);
         if($upd){
-            return redirect()->route('user.list')->with([
+            return redirect()->route('pengguna.list')->with([
                 'error'=>false,
                 'message'=>'Ubah User Berhasil'
             ]);
@@ -115,30 +118,30 @@ class PenggunaController extends Controller
     {
         $data = User::find($id);
         if($data==null){
-            return redirect()->route('user.list')->with([
+            return redirect()->route('pengguna.list')->with([
                 'error'=>true,
                 'message'=>'Data Tidak Ditemukan'
             ]);
         }
-        return view('content.edit-user',compact('data'));
+        return view('content.edit-pengguna',compact('data'));
     }
     public function hapusUser($id)
     {
         $data = User::find($id);
         if($data==null){
-            return redirect()->route('user.list')->with([
+            return redirect()->route('pengguna.list')->with([
                 'error'=>true,
                 'message'=>'Data Tidak Ditemukan'
             ]);
         }
         $del = $data->delete();
         if($del){
-            return redirect()->route('user.list')->with([
+            return redirect()->route('pengguna.list')->with([
                 'error'=>false,
                 'message'=>'Hapus User Berhasil'
             ]);
         }
-        return redirect()->route('user.list')->with([
+        return redirect()->route('pengguna.list')->with([
             'error'=>true,
             'message'=>'Hapus User Gagal'
         ]);

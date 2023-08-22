@@ -35,7 +35,7 @@
                                 <td>Rp {{number_format($val->harga)}}</td>
                                 <td>{{$val->expired_at}}</td>
                                 <td>{{$val->deskripsi}}</td>
-                                <td>{{$val->data_pembuat->nama}}</td>
+                                <td>{{$val->created_user}}</td>
                                 <td>{{$val->created_at}}</td>
                                 <td>{{$val->updated_user}}</td>
                                 <td>{{$val->updated_at}}</td>

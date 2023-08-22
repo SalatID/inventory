@@ -6,12 +6,16 @@
             <input type="text" name="nama" class="form-control" value="{{$data->nama}}" disabled>
         </div>
         <div class="row">
-            <label for="">Alamat</label>
-            <textarea name="alamat" class="form-control" disabled>{{$data->alamat}}</textarea>
+            <label for="">NIP</label>
+            <input type="text" name="nip" class="form-control" value="{{$data->nip}}" disabled>
         </div>
         <div class="row">
-            <label for="">Kapasitas</label>
-            <input type="number" name="kapasitas" class="form-control" value="{{$data->kapasitas}}" disabled>
+            <label for="">Email</label>
+            <input type="email" name="email" class="form-control" value="{{$data->email}}" disabled>
+        </div>
+        <div class="row">
+            <label for="">Role</label>
+            <input type="text" name="role" class="form-control" value="{{$data->role}}" disabled>
         </div>
         <div class="row">
             <label for="">Dibuat Oleh</label>
@@ -22,7 +26,11 @@
             <input type="text" name="created_at" class="form-control" value="{{$data->created_at}}" disabled>
         </div>
         <div class="row">
-            <label for="">Tanggal Diedit</label>
+            <label for="">Diubah Oleh</label>
+            <input type="text" name="updated_user" class="form-control" value="{{$data->updated_user}}" disabled>
+        </div>
+        <div class="row">
+            <label for="">Tanggal Diubah</label>
             <input type="text" name="updated_at" class="form-control" value="{{$data->updated_at}}" disabled>
         </div>
     </div>
