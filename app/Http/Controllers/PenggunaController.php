@@ -99,7 +99,7 @@ class PenggunaController extends Controller
             'role'=>request('role'),
             
         ];
-        if(request()->has('password')){
+        if(request()->has('password') && request('password')!=null){
             $updateData['password']=bcrypt(request('password'));
         }
         $upd = $data->update($updateData);

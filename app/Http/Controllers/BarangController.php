@@ -58,4 +58,15 @@ class BarangController extends Controller
         }
         return view('content.detail-barang',compact('data'));
     }
+    public function editBarang($id)
+    {
+        $data = Produk::find($id);
+        if($data==null){
+            return redirect()->route('barang.index')->with([
+                'error'=>true,
+                'message'=>'Data Tidak Ditemukan'
+            ]);
+        }
+        return view('content.edit-barang',compact('data'));
+    }
 }

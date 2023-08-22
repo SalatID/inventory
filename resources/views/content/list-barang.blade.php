@@ -41,7 +41,7 @@
                                 <td>{{$val->updated_at}}</td>
                                 <th>
                                     <a href="{{route('barang.detail',[$val->id])}}" class="btn btn-sm btn-success">Detail</a>
-                                    <a href="#" class="btn btn-sm btn-secondary">Edit</a>
+                                    <a href="{{route('barang.edit',[$val->id])}}" class="btn btn-sm btn-secondary">Edit</a>
                                     <a href="#" class="btn btn-sm btn-danger">Hapus</a>
                                 </th>
                             </tr>
