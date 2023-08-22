@@ -109,7 +109,7 @@
                             </div>
                             <div class="row">
                                 <label for="">Foto</label>
-                                <input type="file" name="foto" class="form-control" accept=".jpg,.jpeg,.png" multiple>
+                                <input type="file" name="foto" class="form-control" accept=".jpg,.jpeg,.png">
                                 @if ($errors->has('foto'))
                                     <span class="text-danger">{{ $errors->first('foto') }}</span>
                                 @endif
