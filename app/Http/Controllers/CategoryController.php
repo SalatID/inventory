@@ -116,4 +116,25 @@ class CategoryController extends Controller
             'message'=>'Hapus Kategori Gagal'
         ]);
     }
+    public function hapusUser($id)
+    {
+        $data = User::find($id);
+        if($data==null){
+            return redirect()->route('user.list')->with([
+                'error'=>true,
+                'message'=>'Data Tidak Ditemukan'
+            ]);
+        }
+        $del = $data->delete();
+        if($del){
+            return redirect()->route('user.list')->with([
+                'error'=>false,
+                'message'=>'Hapus User Berhasil'
+            ]);
+        }
+        return redirect()->route('user.list')->with([
+            'error'=>true,
+            'message'=>'Hapus User Gagal'
+        ]);
+    }
 }

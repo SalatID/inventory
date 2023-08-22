@@ -28,12 +28,12 @@ class GudangController extends Controller
         if($ins){
             return redirect()->back()->with([
                 'error'=>false,
-                'message'=>'Tambah Kategori Berhasil'
+                'message'=>'Tambah Gudang Berhasil'
             ]);
         }
         return redirect()->back()->with([
             'error'=>true,
-            'message'=>'Tambah Kategori Gagal'
+            'message'=>'Tambah Gudang Gagal'
         ]);
     }
     public function detailGudang($id)
@@ -88,5 +88,26 @@ class GudangController extends Controller
             ]);
         }
         return view('content.edit-gudang',compact('data'));
+    }
+    public function hapusGudang($id)
+    {
+        $data = Gudang::find($id);
+        if($data==null){
+            return redirect()->route('gudang.list')->with([
+                'error'=>true,
+                'message'=>'Data Tidak Ditemukan'
+            ]);
+        }
+        $del = $data->delete();
+        if($del){
+            return redirect()->route('gudang.list')->with([
+                'error'=>false,
+                'message'=>'Hapus Gudang Berhasil'
+            ]);
+        }
+        return redirect()->route('gudang.list')->with([
+            'error'=>true,
+            'message'=>'Hapus Gudang Gagal'
+        ]);
     }
 }

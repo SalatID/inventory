@@ -54,4 +54,93 @@ class PenggunaController extends Controller
             'message'=>'Tambah Pengguna Gagal'
         ]);
     }
+    public function detailUser($id)
+    {
+        $data = User::find($id);
+        if($data==null){
+            return redirect()->route('user.list')->with([
+                'error'=>true,
+                'message'=>'Data Tidak Ditemukan'
+            ]);
+        }
+        return view('content.detail-user',compact('data'));
+    }
+    public function updateUser($id)
+    {
+        $validate = request()->validate([
+            'nama'=>['required'],
+            'nip'=>['required','numeric'],
+            'email'=>['required','email'],
+            'role'=>['required'],
+            // 'password'=>['required'],
+            // 'retype_password'=>['required','same:password']
+        ]);
+        $email = User::where('email',request('email'))->exists();
+        if($email){
+            return redirect()->back()->with([
+                'error'=>true,
+                'message'=>'email '.request('email').' sudah terdaftar'
+            ]);
+        }
+        $data = User::find($id);
+        if($data==null){
+            return redirect()->route('user.list')->with([
+                'error'=>true,
+                'message'=>'Data Tidak Ditemukan'
+            ]);
+        }
+        $updateData = [
+            'nama'=>request('nama'),
+            'nip'=>request('nip'),
+            'email'=>request('email'),
+            'role'=>request('role'),
+            
+        ];
+        if(request()->has('password')){
+            $updateData['password']=bcrypt(request('password'));
+        }
+        $upd = $data->update($updateData);
+        if($upd){
+            return redirect()->route('user.list')->with([
+                'error'=>false,
+                'message'=>'Ubah User Berhasil'
+            ]);
+        }
+        return redirect()->back()->with([
+            'error'=>true,
+            'message'=>'Ubah User Gagal'
+        ]);
+    }
+    public function editUser($id)
+    {
+        $data = User::find($id);
+        if($data==null){
+            return redirect()->route('user.list')->with([
+                'error'=>true,
+                'message'=>'Data Tidak Ditemukan'
+            ]);
+        }
+        return view('content.edit-user',compact('data'));
+    }
+    public function hapusUser($id)
+    {
+        $data = User::find($id);
+        if($data==null){
+            return redirect()->route('user.list')->with([
+                'error'=>true,
+                'message'=>'Data Tidak Ditemukan'
+            ]);
+        }
+        $del = $data->delete();
+        if($del){
+            return redirect()->route('user.list')->with([
+                'error'=>false,
+                'message'=>'Hapus User Berhasil'
+            ]);
+        }
+        return redirect()->route('user.list')->with([
+            'error'=>true,
+            'message'=>'Hapus User Gagal'
+        ]);
+    }
 }

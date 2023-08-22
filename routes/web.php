@@ -28,6 +28,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/pengguna',[PenggunaController::class,'list'])->name('pengguna.list');
     Route::post('/pengguna/tambah',[PenggunaController::class,'tambahPengguna'])->name('pengguna.tambah');
     Route::get('/barang',[BarangController::class,'list'])->name('barang.list');
+    Route::post('/barang',[BarangController::class,'tambahBarang'])->name('barang.tambah');
     Route::get('/kategori',[CategoryController::class,'list'])->name('kategori.list');
     Route::post('/kategori/tambah',[CategoryController::class,'tambahKategori'])->name('kategori.tambah');
     Route::get('/kategori/detail/{id}',[CategoryController::class,'detailKategori'])->name('kategori.detail');

@@ -18,27 +18,34 @@
                                 <th>Harga</th>
                                 <th>Tanggal Expired</th>
                                 <th>Deskripsi</th>
+                                <th>Dibuat Oleh</th>
                                 <th>Tanggal Dibuat</th>
+                                <th>Diubah Oleh</th>
                                 <th>Tanggal Diedit</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @php($i=1)
+                            @foreach($data as $val)
                             <tr>
-                                <td>1</td>
-                                <td>Sabun</td>
-                                <td>Perlengkapan Mandi</td>
-                                <td>Rp 2.000</td>
-                                <td>12 Desember 2023</td>
-                                <td>Sabum merek nuvo</td>
-                                <td>01 Jan 2023, 13:00:00</td>
-                                <td>01 Jan 2023, 13:00:00</td>
+                                <td>{{$i}}</td>
+                                <td>{{$val->nama}}</td>
+                                <td>{{$val->data_kategori->nama}}</td>
+                                <td>Rp {{number_format($val->harga)}}</td>
+                                <td>{{$val->expired_at}}</td>
+                                <td>{{$val->deskripsi}}</td>
+                                <td>{{$val->data_pembuat->nama}}</td>
+                                <td>{{$val->created_at}}</td>
+                                <td>{{$val->updated_user}}</td>
+                                <td>{{$val->updated_at}}</td>
                                 <th>
                                     <a href="#" class="btn btn-sm btn-success">Detail</a>
                                     <a href="#" class="btn btn-sm btn-secondary">Edit</a>
                                     <a href="#" class="btn btn-sm btn-danger">Hapus</a>
                                 </th>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -56,7 +63,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="" enctype="multipart/form-data">
+                <form action="{{route('barang.tambah')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="container">
@@ -71,6 +78,9 @@
                                 <label for="">Kategori</label>
                                 <select name="kategori_id" class="form-control" required>
                                     <option value="">Pilih Kategori</option>
+                                    @foreach(\App\Models\Kategori::all() as $val)
+                                        <option value="{{$val->id}}">{{$val->nama}}</option>
+                                    @endforeach
                                 </select>
                                 @if ($errors->has('kategori_id'))
                                     <span class="text-danger">{{ $errors->first('kategori_id') }}</span>
@@ -99,7 +109,7 @@
                             </div>
                             <div class="row">
                                 <label for="">Foto</label>
-                                <input type="file" name="foto" class="form-control" accept=".jpg,.jpeg,.png">
+                                <input type="file" name="foto" class="form-control" accept=".jpg,.jpeg,.png" multiple>
                                 @if ($errors->has('foto'))
                                     <span class="text-danger">{{ $errors->first('foto') }}</span>
                                 @endif
