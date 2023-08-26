@@ -10,13 +10,13 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
         <a class="nav-link" href="{{route('dashboard')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
+@if(auth()->user()->role=='Admin')
+    <!-- Nav Item - Dashboard -->
     <li class="nav-item ">
         <a class="nav-link" href="{{route('pengguna.list')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -37,14 +37,10 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Manajemen Kategori</span></a>
     </li>
+    @endif
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{route('scan')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Scan</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Logout</span></a>
     </li>
 </ul>

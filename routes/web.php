@@ -9,6 +9,7 @@ use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GudangController;
+use App\Http\Controllers\TransaksiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,9 @@ Route::get('/', function () {
 });
 Route::group(['middleware'=>['auth']],function(){
     Route::get('/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+    Route::get('/scan',[TransaksiController::class,'scan'])->name('scan');
+    Route::post('/scan',[TransaksiController::class,'simpanTransaksi'])->name('scan.simpan');
+
     Route::get('/pengguna',[PenggunaController::class,'list'])->name('pengguna.list');
     Route::get('/pengguna/detail/{id}',[PenggunaController::class,'detailUser'])->name('pengguna.detail');
     Route::get('/pengguna/edit/{id}',[PenggunaController::class,'editUser'])->name('pengguna.edit');
@@ -34,6 +38,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/barang',[BarangController::class,'list'])->name('barang.list');
     Route::get('/barang/detail/{id}',[BarangController::class,'detailBarang'])->name('barang.detail');
     Route::get('/barang/edit/{id}',[BarangController::class,'editBarang'])->name('barang.edit');
+    Route::put('/barang/update/{id}',[BarangController::class,'updateBarang'])->name('barang.update');
     Route::post('/barang',[BarangController::class,'tambahBarang'])->name('barang.tambah');
     Route::get('/kategori',[CategoryController::class,'list'])->name('kategori.list');
     Route::post('/kategori/tambah',[CategoryController::class,'tambahKategori'])->name('kategori.tambah');

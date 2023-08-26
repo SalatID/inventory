@@ -1,12 +1,12 @@
 @extends('index')
 @section('content')
 <div class="container">
-    <form action="" method="POST">
+    <form action="{{route('barang.update',[$data->id])}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method("PUT")
         <div class="row">
             <label for="">Nama</label>
-            <input type="text" name="nama" class="form-control" required>
+            <input type="text" name="nama" class="form-control" value="{{$data->nama}}">
             @if ($errors->has('nama'))
                 <span class="text-danger">{{ $errors->first('nama') }}</span>
             @endif
@@ -16,7 +16,7 @@
             <select name="kategori_id" class="form-control" required>
                 <option value="">Pilih Kategori</option>
                 @foreach(\App\Models\Kategori::all() as $val)
-                    <option value="{{$val->id}}">{{$val->nama}}</option>
+                    <option {{$val->id == $data->kategori_id?'selected':''}} value="{{$val->id}}">{{$val->nama}}</option>
                 @endforeach
             </select>
             @if ($errors->has('kategori_id'))
@@ -25,21 +25,21 @@
         </div>
         <div class="row">
             <label for="">Harga</label>
-            <input type="number" name="harga" class="form-control" required>
+            <input type="number" name="harga" class="form-control"  value="{{$data->harga}}">
             @if ($errors->has('harga'))
                 <span class="text-danger">{{ $errors->first('harga') }}</span>
             @endif
         </div>
         <div class="row">
             <label for="">Tanggal Expired</label>
-            <input type="date" name="expired_at" class="form-control" required>
+            <input type="date" name="expired_at" class="form-control"  value="{{$data->expired_at}}">
             @if ($errors->has('expired_at'))
                 <span class="text-danger">{{ $errors->first('expired_at') }}</span>
             @endif
         </div>
         <div class="row">
             <label for="">Deskripsi</label>
-            <textarea name="deskripsi" class="form-control"></textarea>
+            <textarea name="deskripsi" class="form-control">{{$data->deskripsi}}</textarea>
             @if ($errors->has('deskripsi'))
                 <span class="text-danger">{{ $errors->first('deskripsi') }}</span>
             @endif
